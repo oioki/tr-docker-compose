@@ -1,0 +1,43 @@
+version: '3'
+services:
+
+  lb:
+    build:
+      context: lb
+    image: lb:latest
+    ports:
+      - 80:80
+    networks:
+      default:
+        aliases:
+          - lb.local
+
+  apache:
+    build:
+      context: apache
+    image: apache:latest
+    networks:
+      default:
+        aliases:
+          - apache.local
+    depends_on:
+      - app
+      - lb
+
+  app:
+    build:
+      context: app
+    image: app:latest
+    networks:
+      default:
+        aliases:
+          - app.local
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    networks:
+      default:
+        aliases:
+          - redis.local
