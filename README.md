@@ -24,7 +24,7 @@ sudo sysctl -w vm.max_map_count=262144
 
 3. After that, you will need to create Kibana index patterns:
 ```
-./elastic-create-index-patterns.py
+./es-create-index-patterns.sh
 ```
 
 4. Make a request to the application. After that, you should see new log entries in Kibana.
