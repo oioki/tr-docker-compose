@@ -28,3 +28,15 @@ sudo sysctl -w vm.max_map_count=262144
 ```
 
 4. Make a request to the application. After that, you should see new log entries in Kibana.
+
+
+## Jenkins
+
+1. Jenkins can be accessed via http://localhost:8080
+
+2. For the sake of testing, you can copy Elasticsearch index by running this command:
+```
+./es-reindex.sh access-2018.04.15 access-2018.03.10
+```
+
+3. Daily job will run in between 03:00 and 03:59. However, you can change schedule in [Job Configuration](http://localhost:8080/job/rotate-elasticsearch-index/configure)
